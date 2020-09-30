@@ -1,3 +1,7 @@
+"""
+Application entry point
+"""
+
 import pprint
 
 import click
@@ -11,6 +15,9 @@ LEGAL_HOLD_POLICY_ID = "2013223"
 
 @click.command()
 def list_legal_hold_policies():
+    """
+    Lists all legal holds
+    """
     box_client = utils.get_box_client()
     policies = box_client.get_legal_hold_policies()
     for policy in policies:
@@ -19,6 +26,9 @@ def list_legal_hold_policies():
 
 @click.command()
 def get_legal_hold_policy():
+    """
+    Gets a legal hold policy from its ID
+    """
     box_client = utils.get_box_client()
     legal_hold_policy = box_client.legal_hold_policy(LEGAL_HOLD_POLICY_ID).get()
     pprint.pprint(legal_hold_policy.response_object)
@@ -26,6 +36,9 @@ def get_legal_hold_policy():
 
 @click.command()
 def list_legal_hold_policy_assignments():
+    """
+    List all legal hold policy assignments from a policy ID
+    """
     box_client = utils.get_box_client()
     legal_hold_policy_assignments = box_client.legal_hold_policy(LEGAL_HOLD_POLICY_ID).get_assignments()
     for assignment in legal_hold_policy_assignments:
@@ -36,6 +49,9 @@ def list_legal_hold_policy_assignments():
 
 @click.command()
 def move_folder_under_hold():
+    """
+    Copies all folders under legal hold into a new location, and applies a legal hold to the copied folder
+    """
     box_client = utils.get_box_client(as_user_email="drodgers+demo@boxdemo.com")
     policies = box_client.get_legal_hold_policies()
     for policy in policies:

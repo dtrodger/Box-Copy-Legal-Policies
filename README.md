@@ -4,6 +4,9 @@
 `$ virtualenv --python=python3 env`  
 2. (Optional) Activate the virtual environment  
 `$ source env/bin/activate`  
+3. Addend your current working directory to the PYTHONPATH environment variable  
+`$ pwd`  
+`$ export PYTHONPATH=[path returned from the previous command]`  
 3. Install the project dependencies  
 `$ pip install -r requirements.txt` 
 4. Create a `box_jwt.yml` file at the root of the project, and add your JWT key data  
