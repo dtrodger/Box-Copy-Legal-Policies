@@ -1,0 +1,4 @@
+/env
+.idea
+box_jwt.yml
+__pycache__/
